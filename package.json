@@ -18,11 +18,21 @@
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "test:report": "npx playwright show-report output/playwright-report",
+    "lint": "npx eslint .",
+    "lint:fix:dryrun": "npx eslint --fix-dry-run .",
+    "lint:fix": "npx eslint --fix .",
     "clean": "rm -rf playwright-report test-results"
   },
   "devDependencies": {
+    "@eslint/js": "^9.16.0",
     "@playwright/test": "^1.49.0",
-    "@types/node": "^22.10.1"
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "eslint-plugin-playwright": "^2.1.0",
+    "globals": "^15.13.0",
+    "typescript-eslint": "^8.17.0"
   },
   "engines": {
     "node": ">=21"
