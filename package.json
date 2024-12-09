@@ -23,7 +23,8 @@
     "lint:fix": "eslint --fix .",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "clean": "rm -rf playwright-report test-results"
+    "clean": "rm -rf playwright-report test-results",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
@@ -36,7 +37,8 @@
     "eslint-plugin-playwright": "^2.1.0",
     "globals": "^15.13.0",
     "prettier": "^3.4.2",
-    "typescript-eslint": "^8.17.0"
+    "typescript-eslint": "^8.17.0",
+    "husky": "^8.0.0"
   },
   "engines": {
     "node": ">=21"
