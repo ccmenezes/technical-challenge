@@ -22,6 +22,13 @@ export default [
       ...typescriptConfigs.recommended.rules,
       ...playwright.configs['flat/recommended'].rules,
       'no-console': 'warn',
+      "no-restricted-syntax": [
+      "error",
+        {
+          "selector": "CallExpression[callee.property.name='only']",
+          "message": "We don't want to leave .only on our tests😱"
+        },
+      ],
     },
   },
   {
