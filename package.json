@@ -21,6 +21,7 @@
     "lint": "npx eslint .",
     "lint:fix:dryrun": "npx eslint --fix-dry-run .",
     "lint:fix": "npx eslint --fix .",
+    "prettier:check": "npx prettier . --write",
     "clean": "rm -rf playwright-report test-results"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^8.17.0",
     "@typescript-eslint/parser": "^8.17.0",
     "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-playwright": "^2.1.0",
     "globals": "^15.13.0",
     "typescript-eslint": "^8.17.0"

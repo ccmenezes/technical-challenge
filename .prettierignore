@@ -1,0 +1,22 @@
+# Playwright Specific
+node_modules/
+test-results/
+playwright-report
+
+# Github
+.github/
+
+# IDE - VSCode
+.vscode/*
+.idea/
+
+# System Files
+.DS_Store
+Thumbs.db
+{"mode":"full","isActive":false}
+
+# Docs files
+*.json
+.prettierrc
+eslint.config.mjs 
+playwright.config.ts
