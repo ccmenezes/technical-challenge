@@ -15,15 +15,15 @@
   "author": "Claudia Menezes",
   "license": "ISC",
   "scripts": {
-    "test": "npx playwright test",
-    "test:headed": "npx playwright test --headed",
-    "test:report": "npx playwright show-report output/playwright-report",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report output/playwright-report",
     "lint": "eslint .",
     "lint:fix:dryrun": "eslint --fix-dry-run .",
     "lint:fix": "eslint --fix .",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "clean": "rm -rf playwright-report test-results",
+    "clean": "rm -rf playwright-report test-results output",
     "prepare": "husky install"
   },
   "devDependencies": {
