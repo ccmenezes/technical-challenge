@@ -22,6 +22,8 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run Playwright tests
+      env:
+        BASE_URL: ${{ vars.BASE_URL }}
       run: npx playwright test
 
     - name: Upload Playwright artifacts
