@@ -5,14 +5,13 @@
   "main": "test/",
   "scripts": {
     "test": "playwright test",
-    "test:headed": "playwright test --headed",
     "test:report": "playwright show-report output/playwright-report",
-    "lint": "eslint .",
-    "lint:fix:dryrun": "eslint --fix-dry-run .",
-    "lint:fix": "eslint --fix .",
+    "test:debug": "playwright test --ui",
     "prettier": "prettier . --check",
     "prettier:fix": "prettier . --write",
-    "clean": "rm -rf playwright-report test-results output",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "clean:report": "rm -rf output",
     "prepare": "husky install"
   },
   "keywords": [
