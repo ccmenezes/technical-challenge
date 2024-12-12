@@ -12,9 +12,9 @@ import {
   RETURNED_PRODUCTS,
   NON_EXISTENT_PRODUCT,
   NO_RESULTS_MSG,
-} from '../fixtures/homepage.fixture';
+} from '../fixtures/filter.fixture';
 // Page objects
-import { Homepage } from '../page-objects/homepage.po';
+import { Filter } from '../page-objects/filter.po';
 
 test.describe('Filter - Sorting', () => {
   test.beforeEach(async ({ page }) => {
@@ -23,46 +23,46 @@ test.describe('Filter - Sorting', () => {
   });
 
   test('Should sorting products by name', async ({ page }) => {
-    const homepage = new Homepage(page);
+    const filter = new Filter(page);
 
     // Sort by name A - Z
-    homepage.sortSelectOption('name,asc');
+    filter.sortSelectOption('name,asc');
     // Count the total number of rows
-    await expect(homepage.productsContainer).toHaveCount(CARDS_RETURNED_BY_NAME);
+    await expect(filter.productsContainer).toHaveCount(CARDS_RETURNED_BY_NAME);
     // Verifify the sort asc by name
     for (let index = 0; index < NAME_ASC.length; index++) {
-      await expect(homepage.productsContainer.nth(index)).toHaveText(NAME_ASC[index]);
+      await expect(filter.productsContainer.nth(index)).toHaveText(NAME_ASC[index]);
     }
 
     // Sort by name Z - A
-    homepage.sortSelectOption('name,desc');
+    filter.sortSelectOption('name,desc');
     // Count the total number of rows
-    await expect(homepage.productsContainer).toHaveCount(CARDS_RETURNED_BY_NAME);
+    await expect(filter.productsContainer).toHaveCount(CARDS_RETURNED_BY_NAME);
     // Verifify the sort desc by name
     for (let index = 0; index < NAME_DESC.length; index++) {
-      await expect(homepage.productsContainer.nth(index)).toHaveText(NAME_DESC[index]);
+      await expect(filter.productsContainer.nth(index)).toHaveText(NAME_DESC[index]);
     }
   });
 
   test('Should sorting products by price', async ({ page }) => {
-    const homepage = new Homepage(page);
+    const filter = new Filter(page);
 
     // Sort by price high to low
-    await homepage.sortSelectOption('price,desc');
+    await filter.sortSelectOption('price,desc');
     // Count the total number of rows
-    await expect(homepage.productsContainer).toHaveCount(CARDS_RETURNED_BY_PRICE);
+    await expect(filter.productsContainer).toHaveCount(CARDS_RETURNED_BY_PRICE);
     // Verifify the sort desc by price
     for (let index = 0; index < PRICE_DESC.length; index++) {
-      await expect(homepage.productsContainer.nth(index)).toHaveText(PRICE_DESC[index]);
+      await expect(filter.productsContainer.nth(index)).toHaveText(PRICE_DESC[index]);
     }
 
     // Sort by price low to high
-    await homepage.sortSelectOption('price,asc');
+    await filter.sortSelectOption('price,asc');
     // Count the total number of rows
-    await expect(homepage.productsContainer).toHaveCount(CARDS_RETURNED_BY_PRICE);
+    await expect(filter.productsContainer).toHaveCount(CARDS_RETURNED_BY_PRICE);
     // Verifify the sort asc by price
     for (let index = 0; index < PRICE_ASC.length; index++) {
-      await expect(homepage.productsContainer.nth(index)).toHaveText(PRICE_ASC[index]);
+      await expect(filter.productsContainer.nth(index)).toHaveText(PRICE_ASC[index]);
     }
   });
 });
@@ -74,22 +74,22 @@ test.describe('Filter - Searching', () => {
   });
 
   test('Should successfully search an existent product', async ({ page }) => {
-    const homepage = new Homepage(page);
+    const filter = new Filter(page);
     // Fill a product
-    await homepage.informSearchTerm(EXISTENT_PRODUCT);
+    await filter.informSearchTerm(EXISTENT_PRODUCT);
     // Count the total number of rows
-    await expect(homepage.productsContainer).toHaveCount(CARDS_RETURNED_BY_SEARCH);
+    await expect(filter.productsContainer).toHaveCount(CARDS_RETURNED_BY_SEARCH);
     // Verify the products returned
     for (let index = 0; index < RETURNED_PRODUCTS.length; index++) {
-      await expect(homepage.productsContainer.nth(index)).toHaveText(RETURNED_PRODUCTS[index]);
+      await expect(filter.productsContainer.nth(index)).toHaveText(RETURNED_PRODUCTS[index]);
     }
   });
 
   test('Should show a notification message for non-existent product', async ({ page }) => {
-    const homepage = new Homepage(page);
+    const filter = new Filter(page);
     // Fill a product
-    await homepage.informSearchTerm(NON_EXISTENT_PRODUCT);
+    await filter.informSearchTerm(NON_EXISTENT_PRODUCT);
     // Verify the notification message
-    await expect(homepage.noProductFoundMsg).toHaveText(NO_RESULTS_MSG);
+    await expect(filter.noProductFoundMsg).toHaveText(NO_RESULTS_MSG);
   });
 });
