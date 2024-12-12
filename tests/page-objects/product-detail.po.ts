@@ -1,4 +1,4 @@
-import { Locator, type Page } from '@playwright/test';
+import { expect, Locator, type Page } from '@playwright/test';
 
 export class ProductDetailPage {
   readonly page: Page;
@@ -11,6 +11,11 @@ export class ProductDetailPage {
     this.addProductButton = page.locator('[data-test="add-to-cart"]');
     this.addToFavouriteButton = page.locator('[data-test="add-to-favorites"]');
     this.inputProductQuantity = page.locator('[data-test="quantity"]');
+  }
+
+  async goto() {
+    await this.page.goto('/');
+    await expect(this.page).toHaveTitle(/Practice Software Testing - Toolshop - v5.0/);
   }
 
   async getProductName() {
