@@ -1,7 +1,7 @@
 import { type Locator, type Page, expect } from '@playwright/test';
+import { BasePage } from './base.po';
 
-export class Filter {
-  readonly page: Page;
+export class Filter extends BasePage {
   readonly productsContainer: Locator;
   readonly sortSelect: Locator;
   readonly searchButton: Locator;
@@ -9,7 +9,7 @@ export class Filter {
   readonly noProductFoundMsg: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.productsContainer = page.locator('div > .container > .card'); // a generic locator, because the data id changes according to filters
     this.sortSelect = page.locator('[data-test="sort"]');
     this.searchArea = page.locator('[data-test="search-query"]');

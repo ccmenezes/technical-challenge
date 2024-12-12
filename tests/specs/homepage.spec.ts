@@ -22,4 +22,12 @@ test.describe('Homepage', () => {
     await homepage.tabFive.click();
     await expect(homepage.paginationList.nth(5)).toHaveClass(classAtiveTab);
   });
+
+  test('Verify click the product redirects to the product page detail', async ({ page }) => {
+    const homepage = new Homepage(page);
+  });
+
+  test('Verify click the product out of stock does not allow to add in the cart', async ({ page }) => {
+    const homepage = new Homepage(page);
+  });
 });

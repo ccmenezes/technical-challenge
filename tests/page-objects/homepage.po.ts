@@ -1,7 +1,7 @@
-import { type Locator, type Page, expect } from '@playwright/test';
+import { BasePage } from './base.po';
+import { type Locator, type Page } from '@playwright/test';
 
-export class Homepage {
-  readonly page: Page;
+export class Homepage extends BasePage {
   readonly paginationList: Locator;
   //Product container
   readonly productsContainer: Locator;
@@ -15,7 +15,7 @@ export class Homepage {
   readonly tabSeven: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.tabOne = page.getByLabel('Page-1');
     this.tabTwo = page.getByLabel('Page-2');
     this.tabThree = page.getByLabel('Page-3');
@@ -23,10 +23,5 @@ export class Homepage {
     this.tabFive = page.getByLabel('Page-5');
     this.paginationList = page.locator('.pagination > li');
     this.productsContainer = page.locator('div > .container > .card');
-  }
-
-  async goto() {
-    await this.page.goto('/');
-    await expect(this.page).toHaveTitle(/Practice Software Testing - Toolshop - v5.0/);
   }
 }
