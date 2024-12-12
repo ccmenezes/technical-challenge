@@ -1,7 +1,7 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
+import { BasePage } from './base.po';
 
-export class Header {
-  readonly page: Page;
+export class Header extends BasePage {
   readonly categoryMenu: Locator;
   readonly contactmenu: Locator;
   readonly signinMenu: Locator;
@@ -12,7 +12,7 @@ export class Header {
   readonly categoryRentals: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.categoryMenu = page.locator('[data-test="nav-categories"]');
     this.contactmenu = page.locator('[data-test="nav-contact"]');
     this.signinMenu = page.locator('[data-test="nav-sign-in"]');
@@ -21,11 +21,6 @@ export class Header {
     this.categoryOthers = page.locator('[data-test="nav-other"]');
     this.categorySpecialTools = page.locator('[data-test="nav-special-tools"]');
     this.categoryRentals = page.locator('[data-test="nav-rentals"]');
-  }
-
-  async goto() {
-    await this.page.goto('/');
-    await expect(this.page).toHaveTitle(/Practice Software Testing - Toolshop - v5.0/);
   }
 
   async selectCategoryOption(categoryOption: string) {

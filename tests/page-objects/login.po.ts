@@ -1,9 +1,9 @@
 import { expect, type Page } from '@playwright/test';
+import { BasePage } from './base.po';
 
-export class LoginPage {
-  readonly page: Page;
+export class LoginPage extends BasePage {
   constructor(page: Page) {
-    this.page = page;
+    super(page);
   }
 
   async goto() {
