@@ -32,6 +32,7 @@ test.describe('Homepage', () => {
     const productDetailPage = new ProductDetailPage(page);
 
     await homepage.productsContainer.nth(0).click();
+    await page.waitForURL(/product/);
     //Verify product detail page
     expect(await productDetailPage.getProductName()).toContain(PRODUCT_NAME);
     //Verify product price
