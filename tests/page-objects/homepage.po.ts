@@ -13,6 +13,8 @@ export class Homepage extends BasePage {
   readonly tabFive: Locator;
   readonly tabSix: Locator;
   readonly tabSeven: Locator;
+  readonly firstProduct: Locator;
+  readonly outOfStockProduct: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -22,6 +24,8 @@ export class Homepage extends BasePage {
     this.tabFour = page.getByLabel('Page-4');
     this.tabFive = page.getByLabel('Page-5');
     this.paginationList = page.locator('.pagination > li');
-    this.productsContainer = page.locator('div > .container > .card');
+    this.productsContainer = page.locator('.container > .card');
+    this.firstProduct = page.locator('[data-test="product-01JEYAQY7633DJDRPVPK63S917"]');
+    this.outOfStockProduct = page.locator('[data-test="product-01JEYAQY7633DJDRPVPK63S917"]');
   }
 }

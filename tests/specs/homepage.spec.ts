@@ -32,7 +32,7 @@ test.describe('Homepage', () => {
     const productDetailPage = new ProductDetailPage(page);
 
     await homepage.productsContainer.nth(0).click();
-    await page.waitForURL(/product/);
+    await page.waitForURL('/product');
     //Verify product detail page
     expect(await productDetailPage.getProductName()).toContain(PRODUCT_NAME);
     //Verify product price
@@ -52,6 +52,7 @@ test.describe('Homepage', () => {
     const productDetailPage = new ProductDetailPage(page);
 
     await homepage.productsContainer.nth(3).click();
+    await page.waitForURL('/product');
     //Verify product detail page
     expect(await productDetailPage.getProductName()).toContain(OUT_OF_STOCK_PRODUCT);
     //Verify product price
