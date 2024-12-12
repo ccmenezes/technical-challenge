@@ -18,8 +18,8 @@ import { Filter } from '../page-objects/filter.po';
 
 test.describe('Filter - Sorting', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-    await expect(page).toHaveTitle(/Practice Software Testing - Toolshop - v5.0/);
+    const filter = new Filter(page);
+    await filter.goto();
   });
 
   test('Should sorting products by name', async ({ page }) => {
