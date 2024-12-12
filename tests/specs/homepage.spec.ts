@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 // Page objects
 import { Homepage } from '../page-objects/homepage.po';
 
-test.describe('Filter - Sorting', () => {
+test.describe('Homepage', () => {
   test.beforeEach(async ({ page }) => {
     const homepage = new Homepage(page);
     await homepage.goto();

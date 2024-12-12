@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+// Page objects
+import { Filter } from '../page-objects/filter.po';
 // Helpers
 import {
   PRICE_DESC,
@@ -13,8 +15,6 @@ import {
   NON_EXISTENT_PRODUCT,
   NO_RESULTS_MSG,
 } from '../fixtures/filter.fixture';
-// Page objects
-import { Filter } from '../page-objects/filter.po';
 
 test.describe('Filter - Sorting', () => {
   test.beforeEach(async ({ page }) => {
