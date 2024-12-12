@@ -28,7 +28,7 @@ export class Header {
     await expect(this.page).toHaveTitle(/Practice Software Testing - Toolshop - v5.0/);
   }
 
-  async selectCategory(categoryOption: string) {
+  async selectCategoryOption(categoryOption: string) {
     await this.categoryMenu.click();
 
     switch (categoryOption) {

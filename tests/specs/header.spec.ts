@@ -14,7 +14,7 @@ test.describe('Header - Top menu', () => {
     const topMenu = new Header(page);
 
     for (let index = 0; index < GATEGORIES_ARRAY.length; index++) {
-      await topMenu.selectCategory(GATEGORIES_ARRAY[index]);
+      await topMenu.selectCategoryOption(GATEGORIES_ARRAY[index]);
       await expect(page).toHaveURL(CATEGORY_PAGES[index]);
     }
   });

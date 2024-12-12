@@ -3,6 +3,9 @@ import { type Locator, type Page, expect } from '@playwright/test';
 export class Homepage {
   readonly page: Page;
   readonly paginationList: Locator;
+  //Product container
+  readonly productsContainer: Locator;
+  //Pagination tabs
   readonly tabOne: Locator;
   readonly tabTwo: Locator;
   readonly tabThree: Locator;
@@ -19,6 +22,7 @@ export class Homepage {
     this.tabFour = page.getByLabel('Page-4');
     this.tabFive = page.getByLabel('Page-5');
     this.paginationList = page.locator('.pagination > li');
+    this.productsContainer = page.locator('div > .container > .card');
   }
 
   async goto() {
