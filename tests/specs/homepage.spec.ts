@@ -1,7 +1,7 @@
-import { ProductDetailPage } from '../page-objects/product-detail.po';
 import { test, expect } from '@playwright/test';
 // Page objects
 import { Homepage } from '../page-objects/homepage.po';
+import { ProductDetailPage } from '../page-objects/product-detail.po';
 // Helpers
 import {
   PRODUCT_DESCRIPTION,
@@ -27,12 +27,33 @@ test.describe('Homepage', () => {
     await expect(homepage.productsContainer.nth(0).locator('> div.card-img-wrapper > img')).toHaveAttribute('src');
   });
 
+  test('Should sucessfully navigate between tabs', async ({ page }) => {
+    const homepage = new Homepage(page);
+    const classAtiveTab = 'page-item active';
+    await homepage.tabOne.click();
+    await expect(homepage.paginationList.nth(1)).toHaveClass(classAtiveTab);
+    await homepage.tabTwo.click();
+    await expect(homepage.paginationList.nth(2)).toHaveClass(classAtiveTab);
+    await homepage.tabThree.click();
+    await expect(homepage.paginationList.nth(3)).toHaveClass(classAtiveTab);
+    await homepage.tabFour.click();
+    await expect(homepage.paginationList.nth(4)).toHaveClass(classAtiveTab);
+    await homepage.tabFive.click();
+    await expect(homepage.paginationList.nth(5)).toHaveClass(classAtiveTab);
+  });
+});
+
+test.describe('Redirect to product detail page', () => {
+  test.beforeEach(async ({ page }) => {
+    const homepage = new Homepage(page);
+    await homepage.goto();
+  });
+
   test('Verify click the product redirects to the product page detail', async ({ page }) => {
     const homepage = new Homepage(page);
     const productDetailPage = new ProductDetailPage(page);
 
     await homepage.productsContainer.nth(0).click();
-    await page.waitForURL('/product/01JEYHKP5JFACD8NJNZ91H89W8');
     //Verify product detail page
     expect(await productDetailPage.getProductName()).toContain(PRODUCT_NAME);
     //Verify product price
@@ -52,7 +73,6 @@ test.describe('Homepage', () => {
     const productDetailPage = new ProductDetailPage(page);
 
     await homepage.productsContainer.nth(3).click();
-    await page.waitForURL('/product/01JEYHKP5P4EBZBPWB9MZHHPPY');
     //Verify product detail page
     expect(await productDetailPage.getProductName()).toContain(OUT_OF_STOCK_PRODUCT);
     //Verify product price
@@ -65,20 +85,5 @@ test.describe('Homepage', () => {
     await expect(productDetailPage.addProductButton).toBeDisabled();
     //Verify add to favourites button enable
     await expect(productDetailPage.addToFavouriteButton).toBeEnabled();
-  });
-
-  test('Should sucessfully navigate between tabs', async ({ page }) => {
-    const homepage = new Homepage(page);
-    const classAtiveTab = 'page-item active';
-    await homepage.tabOne.click();
-    await expect(homepage.paginationList.nth(1)).toHaveClass(classAtiveTab);
-    await homepage.tabTwo.click();
-    await expect(homepage.paginationList.nth(2)).toHaveClass(classAtiveTab);
-    await homepage.tabThree.click();
-    await expect(homepage.paginationList.nth(3)).toHaveClass(classAtiveTab);
-    await homepage.tabFour.click();
-    await expect(homepage.paginationList.nth(4)).toHaveClass(classAtiveTab);
-    await homepage.tabFive.click();
-    await expect(homepage.paginationList.nth(5)).toHaveClass(classAtiveTab);
   });
 });
