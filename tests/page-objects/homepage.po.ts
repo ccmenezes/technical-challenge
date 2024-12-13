@@ -5,6 +5,7 @@ export class Homepage extends BasePage {
   readonly paginationList: Locator;
   //Product container
   readonly productsContainer: Locator;
+  readonly imageProductCardAttribute: Locator;
   //Pagination tabs
   readonly tabOne: Locator;
   readonly tabTwo: Locator;
@@ -25,5 +26,6 @@ export class Homepage extends BasePage {
     this.tabFive = page.getByLabel('Page-5');
     this.paginationList = page.locator('.pagination > li');
     this.productsContainer = page.locator('div.container > .card');
+    this.imageProductCardAttribute = page.locator('> div.card-img-wrapper > img');
   }
 }

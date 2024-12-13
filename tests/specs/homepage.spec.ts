@@ -19,12 +19,15 @@ test.describe('Homepage', () => {
   });
 
   test('Verify that the product information is displayed', async ({ page }) => {
+    //TODO
+    //Improve test case
+    //Jira ticket - AUTOMATION-2026
     const homepage = new Homepage(page);
+    const NAME_PRICE_PRODUCT_CARD = 'Combination Pliers $14.15';
     //Verify product name and price
-    await expect(homepage.productsContainer.nth(0)).toHaveText('Combination Pliers $14.15');
+    await expect(homepage.productsContainer.nth(0)).toHaveText(NAME_PRICE_PRODUCT_CARD);
     //Verify product image
-    //To review
-    await expect(homepage.productsContainer.nth(0).locator('> div.card-img-wrapper > img')).toHaveAttribute('src');
+    await expect(homepage.productsContainer.nth(0).locator(homepage.imageProductCardAttribute)).toHaveAttribute('src');
   });
 
   test('Should sucessfully navigate between tabs', async ({ page }) => {

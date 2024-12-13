@@ -31,6 +31,7 @@ This command provide a clean installation, removing existent dependencies to avo
 ### Running Tests
 
 Do you have playwright globally installed in your machine?
+
 - Yes. You can run the command below.
 
 ```bash
@@ -39,11 +40,12 @@ npm run test    # run playwright tests
 
 Executing this command all tests under test/ folder will be performed, when the tests end the output folder have the playwright-report and test-results in a single place.
 
-
 > For the ones who haven't playwright installed yet, after run `npm ci`, please install playwright.
+
 ```bash
 npx playwright install && npx playwright install-deps
 ```
+
 When the installation is finished yoy can run the command `npm run test`.
 
 Checking the test report
