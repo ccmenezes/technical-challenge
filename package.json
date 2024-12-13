@@ -3,31 +3,43 @@
   "version": "1.0.0",
   "description": "Senior QA technical assignment",
   "main": "test/",
-  "git repository": "",
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report output/playwright-report",
+    "test:debug": "playwright test --ui",
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "clean:report": "rm -rf output",
+    "prepare": "husky install"
+  },
   "keywords": [
-    "'technical",
-    "assignment'",
-    "'qa'",
-    "'automation",
-    "tests'",
-    "'frontend'"
+    "technical assignment",
+    "playwright",
+    "typescript",
+    "nodejs",
+    "web-automation",
+    "test-automation"
   ],
   "author": "Claudia Menezes",
   "license": "ISC",
-  "scripts": {
-    "test": "npx playwright test",
-    "test:headed": "npx playwright test --headed",
-    "test:report": "npx playwright show-report output/playwright-report",
-    "clean": "rm -rf playwright-report test-results"
-  },
   "devDependencies": {
+    "@eslint/js": "^9.16.0",
     "@playwright/test": "^1.49.0",
-    "@types/node": "^22.10.1"
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-playwright": "^2.1.0",
+    "globals": "^15.13.0",
+    "prettier": "^3.4.2",
+    "typescript-eslint": "^8.17.0",
+    "husky": "^8.0.0",
+    "dotenv": "^16.4.7"
   },
   "engines": {
     "node": ">=21"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.7"
   }
 }
