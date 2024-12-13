@@ -11,7 +11,7 @@ export class ProductDetailPage extends BasePage {
     super(page);
     this.addProductButton = page.locator('[data-test="add-to-cart"]');
     this.addToFavouriteButton = page.locator('[data-test="add-to-favorites"]');
-    this.inputProductQuantity = page.locator('[data-test="quantity"]');
+    this.inputProductQuantity = page.locator('input[data-test="quantity"]');
     this.disableinputProductQuantity = page.locator('div.input-group.quantity');
   }
 

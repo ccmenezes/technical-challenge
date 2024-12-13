@@ -53,7 +53,7 @@ test.describe('Redirect to product detail page', () => {
     const homepage = new Homepage(page);
     const productDetailPage = new ProductDetailPage(page);
 
-    await homepage.productsContainer.nth(0).click();
+    await homepage.productsContainer.nth(0).click( { force: true });
     //Verify quantity input
     await expect(productDetailPage.inputProductQuantity).toBeEditable();
     //Verify add to cart button enable
@@ -72,7 +72,7 @@ test.describe('Redirect to product detail page', () => {
     const homepage = new Homepage(page);
     const productDetailPage = new ProductDetailPage(page);
 
-    await homepage.productsContainer.nth(3).click();
+    await homepage.productsContainer.nth(3).click({ force: true });
     //Verify quantity input
     await expect(productDetailPage.disableinputProductQuantity).toBeVisible();
     //Verify add to cart button enable
