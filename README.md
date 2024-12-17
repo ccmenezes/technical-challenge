@@ -43,7 +43,7 @@ Executing this command all tests under test/ folder will be performed, when the 
 > For the ones who haven't playwright installed yet, after run `npm ci`, please install playwright.
 
 ```bash
-npx playwright install && npx playwright install-deps
+run: npx playwright install chromium --with-deps
 ```
 
 When the installation is finished yoy can run the command `npm run test`.
