@@ -1,5 +1,5 @@
 import { type Locator, type Page } from '@playwright/test';
-import { BasePage } from './base.po';
+import { BasePage } from '../shared/base.po';
 
 export class Homepage extends BasePage {
   readonly paginationList: Locator;
