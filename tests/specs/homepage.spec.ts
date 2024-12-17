@@ -26,7 +26,7 @@ test.describe('Homepage', () => {
 
   test('Verify that the product information is displayed', async ({ page }) => {
     //TODO
-    //Improve test case
+    //Improve test case, create a fixture for homepage
     //Jira ticket - AUTOMATION-2026
     const homepage = new Homepage(page);
     const NAME_PRICE_PRODUCT_CARD = 'Combination Pliers $14.15';
