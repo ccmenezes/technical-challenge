@@ -13,14 +13,14 @@ export class Header extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.categoryMenu = page.locator('[data-test="nav-categories"]');
-    this.contactmenu = page.locator('[data-test="nav-contact"]');
-    this.signinMenu = page.locator('[data-test="nav-sign-in"]');
-    this.categoryHandTools = page.locator('[data-test="nav-hand-tools"]');
-    this.categoryPowerTools = page.locator('[data-test="nav-power-tools"]');
-    this.categoryOthers = page.locator('[data-test="nav-other"]');
-    this.categorySpecialTools = page.locator('[data-test="nav-special-tools"]');
-    this.categoryRentals = page.locator('[data-test="nav-rentals"]');
+    this.categoryMenu = page.getByTestId('nav-categories');
+    this.contactmenu = page.getByTestId('nav-contact');
+    this.signinMenu = page.getByTestId('nav-sign-in');
+    this.categoryHandTools = page.getByTestId('nav-hand-tools');
+    this.categoryPowerTools = page.getByTestId('nav-power-tools');
+    this.categoryOthers = page.getByTestId('nav-other');
+    this.categorySpecialTools = page.getByTestId('nav-special-tools');
+    this.categoryRentals = page.getByTestId('nav-rentals');
   }
 
   async selectCategoryOption(categoryOption: string) {
