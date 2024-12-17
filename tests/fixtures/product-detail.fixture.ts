@@ -27,3 +27,5 @@ export const OUT_OF_STOCK_CATEGORY = 'Pliers';
 export const OUT_OF_STOCK_BRAND = 'MightyCraft Hardware';
 
 export const OUT_OF_STOCK_TITLE = /Long Nose Pliers/;
+
+export const OUT_OF_STOCK_LABEL = 'Out of stock';

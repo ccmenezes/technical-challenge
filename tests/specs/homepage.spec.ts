@@ -16,6 +16,7 @@ import {
   OUT_OF_STOCK_BRAND,
   TITLE_PRODUCT,
   OUT_OF_STOCK_TITLE,
+  OUT_OF_STOCK_LABEL,
 } from '../fixtures/product-detail.fixture';
 
 test.describe('Homepage', () => {
@@ -117,6 +118,8 @@ test.describe('Homepage - Redirect to product detail page', () => {
 
     //Verify quantity input
     await expect(productDetailPage.inputProductQuantity).toBeDisabled();
+    //Verify out of stock label
+    expect(await productDetailPage.getOutOfStockLabel()).toContain(OUT_OF_STOCK_LABEL);
     //Verify add to cart button enable
     await expect(productDetailPage.addProductButton).toBeDisabled();
     //Verify add to favourites button enable

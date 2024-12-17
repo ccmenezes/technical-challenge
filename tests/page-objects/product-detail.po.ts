@@ -8,6 +8,7 @@ export class ProductDetailPage extends BasePage {
   readonly disableinputProductQuantity: Locator;
   readonly categoryBadge: Locator;
   readonly brandBadge: Locator;
+  readonly outOfStockLabel: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -28,5 +29,9 @@ export class ProductDetailPage extends BasePage {
 
   async getDescription() {
     return await this.page.getByTestId('product-description').textContent();
+  }
+
+  async getOutOfStockLabel() {
+    return await this.page.getByTestId('out-of-stock').textContent();
   }
 }
