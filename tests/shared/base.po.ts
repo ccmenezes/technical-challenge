@@ -8,7 +8,8 @@ export class BasePage {
   }
 
   async goto() {
-    await this.page.goto('/', { waitUntil: 'networkidle' });
+    await this.page.goto('/');
+    //await this.page.goto('/', { waitUntil: 'networkidle' });
     await expect(this.page).toHaveTitle(/Practice Software Testing - Toolshop - v5.0/);
   }
 }

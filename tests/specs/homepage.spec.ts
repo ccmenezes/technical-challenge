@@ -59,6 +59,9 @@ test.describe('Redirect to product detail page', () => {
     await expect(homepage.productsContainer).toHaveCount(9);
 
     await homepage.productsContainer.nth(0).click();
+    //Verify redirects to detail page
+    await page.waitForURL('**/product/01JFA7TQXZBK4Q216GMX8ZHQMY');
+    await expect(page).toHaveTitle(/Combination Pliers/);
     //Verify quantity input
     await expect(productDetailPage.inputProductQuantity).toBeEditable();
     //Verify add to cart button enable
@@ -79,6 +82,10 @@ test.describe('Redirect to product detail page', () => {
 
     await expect(homepage.productsContainer).toHaveCount(9);
     await homepage.productsContainer.nth(3).click();
+    //Verify redirects to detail page
+    await page.waitForURL('**/product/01JFA7TQY4ZT4VH68S202RT0GD');
+    await expect(page).toHaveTitle(/Long Nose Pliers/);
+
     //Verify quantity input
     await expect(productDetailPage.disableinputProductQuantity).toBeVisible();
     //Verify add to cart button enable
