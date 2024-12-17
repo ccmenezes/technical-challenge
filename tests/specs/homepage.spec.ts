@@ -52,7 +52,7 @@ test.describe('Homepage', () => {
   });
 });
 
-test.describe('Redirect to product detail page', () => {
+test.describe('Homepage - Redirect to product detail page', () => {
   test.beforeEach(async ({ page }) => {
     const homepage = new Homepage(page);
     await homepage.goto();
@@ -116,7 +116,7 @@ test.describe('Redirect to product detail page', () => {
     expect(await productDetailPage.getDescription()).toContain(OUT_OF_STOCK_DESCRIPTION);
 
     //Verify quantity input
-    await expect(productDetailPage.disableinputProductQuantity).toBeVisible();
+    await expect(productDetailPage.inputProductQuantity).toBeDisabled();
     //Verify add to cart button enable
     await expect(productDetailPage.addProductButton).toBeDisabled();
     //Verify add to favourites button enable
