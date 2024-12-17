@@ -11,7 +11,7 @@ export class LoginPage extends BasePage {
     await expect(this.page).toHaveTitle(/Practice Software Testing - Toolshop - v5.0/);
   }
 
-  async login(email: string, password: string) {
+  async doLogin(email: string, password: string) {
     await this.page.getByTestId('email').fill(email);
     await this.page.getByTestId('password').fill(password);
     await this.page.getByTestId('login-submit').click();

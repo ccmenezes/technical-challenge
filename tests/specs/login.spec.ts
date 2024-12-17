@@ -12,7 +12,7 @@ test.describe('Login Page', () => {
 
   test('Should login with user valid credentials', async ({ page }) => {
     const login = new LoginPage(page);
-    await login.login(process.env.USER_EMAIL, process.env.PASSWORD);
+    await login.doLogin(`${process.env.USER_EMAIL}`, `${process.env.PASSWORD}`);
     await expect(page).toHaveURL(ACCOUNT_PATH);
     //TODO
     //Move to account page, this locator doesn't belong to the login page
@@ -22,7 +22,7 @@ test.describe('Login Page', () => {
 
   test('Should throw an error message for invalid credentials', async ({ page }) => {
     const login = new LoginPage(page);
-    await login.login(process.env.INVALID_EMAIL, process.env.INVALID_PASSWORD);
+    await login.doLogin(`${process.env.INVALID_EMAIL}`, `${process.env.INVALID_PASSWORD}`);
     expect(await login.getLoginErrorMessage()).toContain(INCORRECT_CREDENTIALS_MSG);
   });
 });
