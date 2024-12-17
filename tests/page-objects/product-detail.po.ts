@@ -6,6 +6,8 @@ export class ProductDetailPage extends BasePage {
   readonly addToFavouriteButton: Locator;
   readonly inputProductQuantity: Locator;
   readonly disableinputProductQuantity: Locator;
+  readonly categoryBadge: Locator;
+  readonly brandBadge: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -13,6 +15,8 @@ export class ProductDetailPage extends BasePage {
     this.addToFavouriteButton = page.locator('[data-test="add-to-favorites"]');
     this.inputProductQuantity = page.locator('input[data-test="quantity"]');
     this.disableinputProductQuantity = page.locator('div.input-group.quantity');
+    this.categoryBadge = page.getByLabel('category');
+    this.brandBadge = page.getByLabel('brand');
   }
 
   async getProductName() {
