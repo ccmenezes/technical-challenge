@@ -1,29 +1,37 @@
 import { Locator, type Page } from '@playwright/test';
-import { BasePage } from './base.po';
+import { BasePage } from '../shared/base.po';
 
 export class ProductDetailPage extends BasePage {
   readonly addProductButton: Locator;
   readonly addToFavouriteButton: Locator;
   readonly inputProductQuantity: Locator;
   readonly disableinputProductQuantity: Locator;
+  readonly categoryBadge: Locator;
+  readonly brandBadge: Locator;
+  readonly outOfStockLabel: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.addProductButton = page.locator('[data-test="add-to-cart"]');
-    this.addToFavouriteButton = page.locator('[data-test="add-to-favorites"]');
-    this.inputProductQuantity = page.locator('input[data-test="quantity"]');
-    this.disableinputProductQuantity = page.locator('div.input-group.quantity');
+    this.addProductButton = page.getByTestId('add-to-cart');
+    this.addToFavouriteButton = page.getByTestId('add-to-favorites');
+    this.inputProductQuantity = page.getByTestId('quantity');
+    this.categoryBadge = page.getByLabel('category');
+    this.brandBadge = page.getByLabel('brand');
   }
 
   async getProductName() {
-    return await this.page.locator('[data-test="product-name"]').textContent();
+    return await this.page.getByTestId('product-name').textContent();
   }
 
   async getUnitPrice() {
-    return await this.page.locator('[data-test="unit-price"]').textContent();
+    return await this.page.getByTestId('unit-price').textContent();
   }
 
   async getDescription() {
-    return await this.page.locator('[data-test="product-description"]').textContent();
+    return await this.page.getByTestId('product-description').textContent();
+  }
+
+  async getOutOfStockLabel() {
+    return await this.page.getByTestId('out-of-stock').textContent();
   }
 }
