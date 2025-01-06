@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 // Page objects
-import { LoginPage } from '../../page-objects/login.po';
+import { LoginPage } from '../page-objects/login.po';
 // Helpers
-import { ACCOUNT_PATH, INCORRECT_CREDENTIALS_MSG } from '../../fixtures/login.fixture';
-import { CREDENTIALS } from '../../fixtures/credentials.fixture';
+import { ACCOUNT_PATH, INCORRECT_CREDENTIALS_MSG } from '../fixtures/login.fixture';
+import { CREDENTIALS } from '../fixtures/credentials.fixture';
 
 test.describe('Login Page', () => {
   test.beforeEach(async ({ page }) => {
