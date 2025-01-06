@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 //Page objects
 import { Header } from '../page-objects/header.po';
 //Helpers
-import { CATEGORY_PAGES, GATEGORIES_ARRAY } from '../fixtures/header.fixture';
+import { CATEGORY_PAGES, GATEGORIES_ARRAY } from '../data/header';
 
 test.describe('Header - Top menu', () => {
   test.beforeEach(async ({ page }) => {
