@@ -14,7 +14,7 @@ export default defineConfig({
   reporter: [['html', { open: 'never', outputFolder: 'output/playwright-report' }]],
   outputDir: 'output/test-results',
   use: {
-    baseURL: process.env.BASE_URL,
+    baseURL: 'https://practicesoftwaretesting.com/',
     screenshot: 'only-on-failure',
     trace: 'on-first-retry',
     testIdAttribute: 'data-test'

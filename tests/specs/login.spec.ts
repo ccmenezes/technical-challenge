@@ -17,7 +17,6 @@ test.describe('Login Page', () => {
     await expect(page).toHaveURL(ACCOUNT_PATH);
     //TODO
     //Move to account page, this locator doesn't belong to the login page
-    //Jira ticket - AUTOMATION-2025
     await expect(page.getByTestId('nav-menu')).toHaveText('Jack Howe');
   });
 
