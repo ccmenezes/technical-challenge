@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 //Page objects
 import { HeaderMobile } from '../page-objects/header.mobile.po';
 //Helpers
-import { MENU_LIST, CATEGORY_LIST, SUBMENU_COUNT, CATEGORY_COUNT } from '../fixtures/header.mobile.json';
+import { MENU_LIST, CATEGORY_LIST, SUBMENU_COUNT, CATEGORY_COUNT } from '../data/header.mobile.json';
 
 test.describe('HeaderMobile - Top menu', () => {
   test.beforeEach(async ({ page }) => {

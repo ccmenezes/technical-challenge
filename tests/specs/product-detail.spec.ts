@@ -17,7 +17,7 @@ import {
   TITLE_PRODUCT,
   OUT_OF_STOCK_TITLE,
   OUT_OF_STOCK_LABEL,
-} from '../fixtures/product-detail.fixture';
+} from '../data/product-detail';
 
 test.describe('Homepage - Redirect to product detail page', () => {
   test.beforeEach(async ({ page }) => {
