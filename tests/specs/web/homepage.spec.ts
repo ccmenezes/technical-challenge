@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 // Page objects
-import { Homepage } from '../page-objects/homepage.po';
+import { Homepage } from '../../page-objects/homepage.po';
 
 test.describe('Homepage', () => {
   test.beforeEach(async ({ page }) => {

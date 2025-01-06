@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 // Page objects
-import { Homepage } from '../page-objects/homepage.po';
-import { ProductDetailPage } from '../page-objects/product-detail.po';
+import { Homepage } from '../../page-objects/homepage.po';
+import { ProductDetailPage } from '../../page-objects/product-detail.po';
 // Helpers
 import {
   PRODUCT_DESCRIPTION,
@@ -17,7 +17,7 @@ import {
   TITLE_PRODUCT,
   OUT_OF_STOCK_TITLE,
   OUT_OF_STOCK_LABEL,
-} from '../fixtures/product-detail.fixture';
+} from '../../fixtures/product-detail.fixture';
 
 test.describe('Homepage - Redirect to product detail page', () => {
   test.beforeEach(async ({ page }) => {
