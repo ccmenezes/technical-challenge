@@ -1,0 +1,4 @@
+{
+    "ACCOUNT_PATH": "account",
+    "INCORRECT_CREDENTIALS_MSG" : "Invalid email or password"
+}

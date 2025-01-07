@@ -1,0 +1,4 @@
+{
+    "CATEGORY_PAGES" : [".*hand-tools", ".*power-tools", ".*other", ".*special-tools", ".*rentals"],
+    "GATEGORIES_ARRAY" : ["handTools", "powerTools", "others", "specialTools", "rentals"]
+}

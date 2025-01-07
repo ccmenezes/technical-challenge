@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 // Page objects
 import { LoginPage } from '../page-objects/login.po';
 // Helpers
-import { ACCOUNT_PATH, INCORRECT_CREDENTIALS_MSG } from '../data/login';
-import { CREDENTIALS } from '../data/credentials';
+import { ACCOUNT_PATH, INCORRECT_CREDENTIALS_MSG } from '../data/login.json';
+import { USER_CUSTOMER_2, RANDOM } from '../data/credentials.json';
 
 test.describe('Login Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -13,7 +13,7 @@ test.describe('Login Page', () => {
 
   test('Should login with user valid credentials', async ({ page }) => {
     const login = new LoginPage(page);
-    await login.doLogin(CREDENTIALS.USER_CUSTOMER_2.USERNAME, CREDENTIALS.USER_CUSTOMER_2.PASSWORD);
+    await login.doLogin(USER_CUSTOMER_2.USERNAME, USER_CUSTOMER_2.PASSWORD);
     await expect(page).toHaveURL(ACCOUNT_PATH);
     //TODO
     //Move to account page, this locator doesn't belong to the login page
@@ -22,7 +22,7 @@ test.describe('Login Page', () => {
 
   test('Should throw an error message for invalid credentials', async ({ page }) => {
     const login = new LoginPage(page);
-    await login.doLogin(CREDENTIALS.RANDOM.USERNAME, CREDENTIALS.RANDOM.PASSWORD);
+    await login.doLogin(RANDOM.USERNAME, RANDOM.PASSWORD);
     expect(await login.getLoginErrorMessage()).toContain(INCORRECT_CREDENTIALS_MSG);
   });
 });
