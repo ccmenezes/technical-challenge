@@ -3,21 +3,7 @@ import { test, expect } from '@playwright/test';
 import { Homepage } from '../page-objects/homepage.po';
 import { ProductDetailPage } from '../page-objects/product-detail.po';
 // Helpers
-import {
-  PRODUCT_DESCRIPTION,
-  PRODUCT_PRICE,
-  PRODUCT_NAME,
-  PRODUCT_CATEGORY,
-  PRODUCT_BRAND,
-  OUT_OF_STOCK_PRODUCT,
-  OUT_OF_STOCK_PRICE,
-  OUT_OF_STOCK_DESCRIPTION,
-  OUT_OF_STOCK_CATEGORY,
-  OUT_OF_STOCK_BRAND,
-  TITLE_PRODUCT,
-  OUT_OF_STOCK_TITLE,
-  OUT_OF_STOCK_LABEL,
-} from '../data/product-detail';
+import { PRODUCT_DETAIL, OUT_OF_STOCK } from '../data/product-detail.json';
 
 test.describe('Homepage - Redirect to product detail page', () => {
   test.beforeEach(async ({ page }) => {
@@ -38,17 +24,18 @@ test.describe('Homepage - Redirect to product detail page', () => {
     await page.reload({ waitUntil: 'networkidle' });
 
     //Verify redirects to detail page
-    await expect(page).toHaveTitle(TITLE_PRODUCT);
+    const PRODUCT_TITLE_REGEX = new RegExp(PRODUCT_DETAIL.PRODUCT_TITLE);
+    await expect(page).toHaveTitle(PRODUCT_TITLE_REGEX);
     //Verify product name
-    expect(await productDetailPage.getProductName()).toContain(PRODUCT_NAME);
+    expect(await productDetailPage.getProductName()).toContain(PRODUCT_DETAIL.PRODUCT_NAME);
     //Verify product category
-    await expect(productDetailPage.categoryBadge).toHaveText(PRODUCT_CATEGORY);
+    await expect(productDetailPage.categoryBadge).toHaveText(PRODUCT_DETAIL.PRODUCT_CATEGORY);
     //Verify product brand
-    await expect(productDetailPage.brandBadge).toHaveText(PRODUCT_BRAND);
+    await expect(productDetailPage.brandBadge).toHaveText(PRODUCT_DETAIL.PRODUCT_BRAND);
     //Verify product price
-    expect(await productDetailPage.getUnitPrice()).toContain(PRODUCT_PRICE);
+    expect(await productDetailPage.getUnitPrice()).toContain(PRODUCT_DETAIL.PRODUCT_PRICE);
     //Verify product description
-    expect(await productDetailPage.getDescription()).toContain(PRODUCT_DESCRIPTION);
+    expect(await productDetailPage.getDescription()).toContain(PRODUCT_DETAIL.PRODUCT_DESCRIPTION);
     //Verify quantity input
     await expect(productDetailPage.inputProductQuantity).toBeEditable();
     //Verify add to cart button enable
@@ -70,22 +57,23 @@ test.describe('Homepage - Redirect to product detail page', () => {
     await page.reload({ waitUntil: 'networkidle' });
 
     //Verify redirects to detail page
-    await expect(page).toHaveTitle(OUT_OF_STOCK_TITLE);
+    const PRODUCT_TITLE_REGEX = new RegExp(OUT_OF_STOCK.PRODUCT_TITLE);
+    await expect(page).toHaveTitle(PRODUCT_TITLE_REGEX);
     //Verify product name
-    expect(await productDetailPage.getProductName()).toContain(OUT_OF_STOCK_PRODUCT);
+    expect(await productDetailPage.getProductName()).toContain(OUT_OF_STOCK.PRODUCT_NAME);
     //Verify product category
-    await expect(productDetailPage.categoryBadge).toHaveText(OUT_OF_STOCK_CATEGORY);
+    await expect(productDetailPage.categoryBadge).toHaveText(OUT_OF_STOCK.PRODUCT_CATEGORY);
     //Verify product brand
-    await expect(productDetailPage.brandBadge).toHaveText(OUT_OF_STOCK_BRAND);
+    await expect(productDetailPage.brandBadge).toHaveText(OUT_OF_STOCK.PRODUCT_BRAND);
     //Verify product price
-    expect(await productDetailPage.getUnitPrice()).toContain(OUT_OF_STOCK_PRICE);
+    expect(await productDetailPage.getUnitPrice()).toContain(OUT_OF_STOCK.PRODUCT_PRICE);
     //Verify product description
-    expect(await productDetailPage.getDescription()).toContain(OUT_OF_STOCK_DESCRIPTION);
+    expect(await productDetailPage.getDescription()).toContain(OUT_OF_STOCK.PRODUCT_DESCRIPTION);
 
     //Verify quantity input
     await expect(productDetailPage.inputProductQuantity).toBeDisabled();
     //Verify out of stock label
-    expect(await productDetailPage.getOutOfStockLabel()).toContain(OUT_OF_STOCK_LABEL);
+    expect(await productDetailPage.getOutOfStockLabel()).toContain(OUT_OF_STOCK.PRODUCT_LABEL);
     //Verify add to cart button enable
     await expect(productDetailPage.addProductButton).toBeDisabled();
     //Verify add to favourites button enable
