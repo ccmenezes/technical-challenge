@@ -1,5 +1,5 @@
 {
-    "MENU_LIST": ["Home", "Categories", "Contact", "Sign in"],
+    "MENU_LIST": ["Home", " Categories Hand ToolsPower ToolsOtherSpecial ToolsRentals", "Contact", "Sign in"],
     "SUBMENU_COUNT": 4,
     "CATEGORY_LIST": ["Hand Tools", "Power Tools", "Other", "Special Tools", "", "Rentals"],
     "CATEGORY_COUNT": 6

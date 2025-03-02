@@ -10,13 +10,15 @@ test.describe('HeaderMobile - Top menu', () => {
     await topMenu.goto();
   });
 
+  test.afterEach(async ({ page }) => {
+    await page.close();
+  });
+
   test('Should expand main menu subcategories', async ({ page }) => {
     topMenu = new HeaderMobile(page);
     await topMenu.menuButton.click();
-    for (const menuItem of await topMenu.menuList.all()) {
-      await expect(menuItem).toHaveCount(SUBMENU_COUNT);
-      await expect(menuItem).toHaveText(MENU_LIST);
-    }
+    await expect(topMenu.menuList).toHaveCount(SUBMENU_COUNT);
+    await expect(topMenu.menuList).toHaveText(MENU_LIST);
   });
 
   test('Should expand the categories menu', async ({ page }) => {
