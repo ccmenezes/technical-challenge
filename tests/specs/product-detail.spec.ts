@@ -1,18 +1,18 @@
+import { Homepage } from './../page-objects/homepage.po';
 import { test, expect } from '@playwright/test';
-// Page objects
-import { Homepage } from '../page-objects/homepage.po';
 import { ProductDetailPage } from '../page-objects/product-detail.po';
-// Helpers
 import { PRODUCT_DETAIL, OUT_OF_STOCK } from '../data/product-detail.json';
 
 test.describe('Homepage - Redirect to product detail page', () => {
+  let homepage: Homepage;
+
   test.beforeEach(async ({ page }) => {
-    const homepage = new Homepage(page);
+    homepage = new Homepage(page);
     await homepage.goto();
   });
 
   test('Verify click the product redirects to the product page detail', async ({ page }) => {
-    const homepage = new Homepage(page);
+    homepage = new Homepage(page);
     const productDetailPage = new ProductDetailPage(page);
 
     await page.reload({ waitUntil: 'networkidle' });
@@ -45,7 +45,7 @@ test.describe('Homepage - Redirect to product detail page', () => {
   });
 
   test('Verify click the product out of stock does not allow to add in the cart', async ({ page }) => {
-    const homepage = new Homepage(page);
+    homepage = new Homepage(page);
     const productDetailPage = new ProductDetailPage(page);
 
     await page.reload({ waitUntil: 'networkidle' });

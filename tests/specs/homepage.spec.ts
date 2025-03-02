@@ -1,17 +1,18 @@
 import { test, expect } from '@playwright/test';
-// Page objects
 import { Homepage } from '../page-objects/homepage.po';
 
 test.describe('Homepage', () => {
+  let homepage: Homepage;
+
   test.beforeEach(async ({ page }) => {
-    const homepage = new Homepage(page);
+    homepage = new Homepage(page);
     await homepage.goto();
   });
 
   test('Verify that the product information is displayed', async ({ page }) => {
     //TODO
     //Improve test case, create a fixture for homepage
-    const homepage = new Homepage(page);
+    homepage = new Homepage(page);
     const NAME_PRICE_PRODUCT_CARD = 'Combination Pliers $14.15';
     //Verify product name and price
     await expect(homepage.productsContainer.nth(0)).toHaveText(NAME_PRICE_PRODUCT_CARD);
@@ -20,17 +21,13 @@ test.describe('Homepage', () => {
   });
 
   test('Should sucessfully navigate between tabs', async ({ page }) => {
-    const homepage = new Homepage(page);
+    homepage = new Homepage(page);
+    const tabIndex = 5;
     const classAtiveTab = 'page-item active';
-    await homepage.tabOne.click();
-    await expect(homepage.paginationList.nth(1)).toHaveClass(classAtiveTab);
-    await homepage.tabTwo.click();
-    await expect(homepage.paginationList.nth(2)).toHaveClass(classAtiveTab);
-    await homepage.tabThree.click();
-    await expect(homepage.paginationList.nth(3)).toHaveClass(classAtiveTab);
-    await homepage.tabFour.click();
-    await expect(homepage.paginationList.nth(4)).toHaveClass(classAtiveTab);
-    await homepage.tabFive.click();
-    await expect(homepage.paginationList.nth(5)).toHaveClass(classAtiveTab);
+
+    for (let index = 1; index <= tabIndex; index++) {
+      await homepage.clickOnTab(tabIndex);
+      await expect(homepage.paginationList.nth(tabIndex)).toHaveClass(classAtiveTab);
+    }
   });
 });

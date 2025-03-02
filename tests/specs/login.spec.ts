@@ -1,18 +1,18 @@
+import { LoginPage } from './../page-objects/login.po';
 import { test, expect } from '@playwright/test';
-// Page objects
-import { LoginPage } from '../page-objects/login.po';
-// Helpers
 import { ACCOUNT_PATH, INCORRECT_CREDENTIALS_MSG } from '../data/login.json';
 import { USER_CUSTOMER_2, RANDOM } from '../data/credentials.json';
 
 test.describe('Login Page', () => {
+  let login: LoginPage;
+
   test.beforeEach(async ({ page }) => {
-    const login = new LoginPage(page);
+    login = new LoginPage(page);
     await login.goto();
   });
 
   test('Should login with user valid credentials', async ({ page }) => {
-    const login = new LoginPage(page);
+    login = new LoginPage(page);
     await login.doLogin(USER_CUSTOMER_2.USERNAME, USER_CUSTOMER_2.PASSWORD);
     await expect(page).toHaveURL(ACCOUNT_PATH);
     //TODO

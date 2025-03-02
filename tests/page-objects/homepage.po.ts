@@ -28,4 +28,26 @@ export class Homepage extends BasePage {
     this.productsContainer = page.locator('div.container > .card');
     this.imageProductCardAttribute = page.locator('> div.card-img-wrapper > img');
   }
+
+  async clickOnTab(pageNumber: number) {
+    switch (pageNumber) {
+      case 1:
+        await this.tabOne.click();
+        break;
+      case 2:
+        await this.tabTwo.click();
+        break;
+      case 3:
+        await this.tabThree.click();
+        break;
+      case 4:
+        await this.tabFour.click();
+        break;
+      case 5:
+        await this.tabFive.click();
+        break;
+      default:
+        throw Error('Sorry, input the wrong option, please inform 1 to 5.');
+    }
+  }
 }
