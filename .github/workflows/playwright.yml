@@ -58,5 +58,5 @@ jobs:
         run: gh pr merge --squash --auto "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{ secrets.DEPENDABOT_ACCESS_TOKEN }}
+         # GH_TOKEN: ${{ secrets.DEPENDABOT_ACCESS_TOKEN }}
 
