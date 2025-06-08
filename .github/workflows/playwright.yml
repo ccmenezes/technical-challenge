@@ -47,7 +47,7 @@ jobs:
   dependabot:
     needs: [test]
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'owner/my_repo'
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'owner/technical-challenge'
     steps:
       - name: Dependabot metadata
         id: metadata
