@@ -6,10 +6,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-permissions:
-  pull-requests: write
-  issues: write
-
 jobs:
   test:
     timeout-minutes: 30
@@ -47,6 +43,11 @@ jobs:
   dependabot:
     needs: test
     runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      issues: write
+
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'owner/technical-challenge'
     steps:
       - name: Dependabot metadata
