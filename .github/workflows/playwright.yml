@@ -6,6 +6,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+  contents: read
+
 jobs:
   test:
     timeout-minutes: 30
@@ -41,24 +45,39 @@ jobs:
         retention-days: 30
 
   dependabot:
-    name: 'Dependabot'
-    needs: [test]
+    needs: test
     runs-on: ubuntu-latest
 
     permissions:
       pull-requests: write
+      issues: write
       contents: write
 
-    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      needs.test.result == 'success'
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+          sudo apt-get update
+          sudo apt-get install gh -y
+
+      - name: Check GitHub CLI version
+        run: gh --version
+
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v2
+        uses: dependabot/fetch-metadata@d7267f607e9d3fb96fc2fbe83e0af444713e90b7
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: "${{ secrets.GH_PAT }}"
 
       - name: Enable auto-merge for Dependabot PRs
-        run: gh pr merge --squash --auto "$PR_URL"
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{ secrets.DEPENDABOT_ACCESS_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
