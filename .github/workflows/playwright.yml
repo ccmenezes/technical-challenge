@@ -66,9 +66,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install gh -y
 
-      - name: Check GitHub CLI version
-        run: gh --version
-
       - name: Dependabot metadata
         id: metadata
         uses: dependabot/fetch-metadata@d7267f607e9d3fb96fc2fbe83e0af444713e90b7
