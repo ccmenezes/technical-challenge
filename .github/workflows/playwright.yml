@@ -52,9 +52,9 @@ jobs:
       pull-requests: write
       issues: write
 
-    if: 
-      github.event.pull_request.user.login == 'dependabot[bot]' #&&
-      #needs.test.result == 'success'
+    if: |
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      needs.test.result == 'success'
 
     steps:
       - name: Checkout repository
