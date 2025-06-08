@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
   
     steps:
-    
     - name: Checkout repository
       uses: actions/checkout@v4
 
@@ -40,28 +39,25 @@ jobs:
         path: output/playwright-report/
         retention-days: 30
 
-dependabot:
-  name: 'Dependabot'
-  needs: [test]
-  runs-on: ubuntu-latest
+  dependabot:
+    name: 'Dependabot'
+    needs: [test]
+    runs-on: ubuntu-latest
 
-  permissions:
-    pull-requests: write
-    contents: write
+    permissions:
+      pull-requests: write
+      contents: write
 
-  if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}
-  steps:
-    - name: Dependabot metadata
-      id: metadata
-      uses: dependabot/fetch-metadata@v2
-      with:
-        github-token: "${{ secrets.GITHUB_TOKEN }}"  # Correct token added here
+    if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"  # Correct token added here
 
-    - name: Enable auto-merge for Dependabot PRs
-      run: gh pr merge --squash --auto "$PR_URL"
-      env:
-        PR_URL: ${{github.event.pull_request.html_url}}
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Correct token added here
+      - name: Enable auto-merge for Dependabot PRs
+        run: gh pr merge --squash --auto "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
-          GH_TOKEN: ${{ secrets.DEPENDABOT_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DEPENDABOT_ACCESS_TOKEN }}  # Correct token added here
